@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="./index">Back</a>
+
+      <form class="form" action="output" method="post">
+
+        <div class="form-group">
+          <fieldset>
+
+            <legend>
+              <h1 class="heading-large">Enter a date
+              </h1>
+              <span class="form-hint">For example, 31 3 1980</span>
+            </legend>
+
+            <div class="form-date">
+              <div class="form-group form-group-day">
+                <label class="form-label" for="day">Day</label>
+                <input class="form-control" id="day" name="day" value="{{ data['day'] }}" type="number" pattern="[0-9]*" min="0" max="31" autocomplete="off">
+              </div>
+
+              <div class="form-group form-group-month">
+                <label class="form-label" for="month">Month</label>
+                <input class="form-control" id="month" name="month" value="{{ data['month'] }}" type="number" pattern="[0-9]*" min="0" max="12" autocomplete="off">
+              </div>
+
+              <div class="form-group form-group-year">
+                <label class="form-label" for="year">Year</label>
+                <input class="form-control" id="year" name="year" value="{{ data['year'] }}" type="number" pattern="[0-9]*" min="0" autocomplete="off">
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Submit">
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

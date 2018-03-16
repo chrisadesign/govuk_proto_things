@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block proposition_header %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-xlarge">
+        {{ serviceName }}
+      </h1>
+
+
+      <ul class="list list-bullet">
+        <li>
+          <a href="dates/">Dates</a> &ndash;
+          take an input or today&rsquo;s date and display/manipulate
+
+          <!-- Requires nunjucks-date-filter, which I've added to 'package.json' [https://www.npmjs.com/package/nunjucks-date-filter]
+
+          Added date as an available filter, see 'filters.js' -->
+        </li>
+        <li>
+          <a href="errors/">Errors</a> &ndash;
+          display an error if input is blank or isn&rsquo;t valid
+
+          <!-- Craig did this this for me 😍 [https://github.com/abbott567/validation-helpers/tree/validation-for-chris]
+
+          Uses macros for the error summary and form input, see 'includes/errormacros'.
+          You need to include the macros on pages they're used - this could be done in 'layout.html' though and be available everywhere.
+
+          The validation rules are in 'errorfunctions.js' which is then included in and used in 'routes.js' -->
+        </li>
+        <!-- <li>Using data from a JSON file</li>
+        <li>For loop, eg table</li> -->
+
+      </ul>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

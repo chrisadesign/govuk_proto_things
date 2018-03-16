@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="index">Back</a>
+
+      <p>Your date output as pure data: {{ data['day'] }} {{ data['month'] }} {{ data['year'] }}</p>
+
+
+      <!-- If you want to format or add time you'll need to create one var -->
+      {% set yourdate = data['year'] + "-" + data['month'] + "-" + data['day'] %}
+
+      <p>Change your date output so the month is a word: {{ yourdate | date("DD MMMM YYYY") }}</p>
+
+      <p>Your date from now: {{ yourdate | date("fromNow") }}</p>
+
+      <p>Todays date: {{ whatever | date("DD MMMM YYYY") }}</p>
+
+      <p>10 days from today: {{ whatever | date("add", 10, "days") | date("DD MMMM YYYY") }}</p>
+
+
+
+
+
+      <p>
+        <a href="../index">Back to main list</a>
+      </p>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

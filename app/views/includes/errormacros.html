@@ -1,0 +1,49 @@
+{% macro errors(errors, h2, p) %}
+  {% if errors %}
+    <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+      <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+        {% if h2 %}
+          {{h2}}
+        {% else %}
+          There&rsquo;s been a problem
+        {% endif %}
+      </h2>
+
+      {% if p %}
+        <p>{{p}}</p>
+      {% endif %}
+
+      <ul class="error-summary-list">
+        {% for id, error in errors %}
+          {% if error.message !== false %}
+            <li><a href="#{{id}}">{{error.label | capitalize }} - {{error.message | lower}}</a></li>
+            {% endif %}
+          {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro govukTextInput(name, label, error, hint, size) %}
+  <div class="form-group{{' form-group-error' if error}}">
+    <label class="form-label" for="{{name}}">
+      {{label}}
+      {% if hint %}
+      <span class="form-hint">
+        {{hint}}
+      </span>
+      {% endif %}
+      {% if error %}
+        <span class="error-message">{{error}}</span>
+      {% endif %}
+    </label>
+    <input
+      class="form-control {{size}}{{' form-control-error' if error}}"
+      id="{{name}}"
+      type="text"
+      name="{{name}}"
+      value="{{data[name]}}"
+      autocomplete="off"
+    />
+  </div>
+{% endmacro %}
