@@ -1,0 +1,49 @@
+{#
+  Usage:
+  {% import "../includes/navigation.html" as nav %}
+
+  {{m.nav(}}
+  {{m.nav(active='item 1')}}
+#}
+
+{% set globalNavItems = [
+  {
+    name: 'item 1',
+    url: '#0'
+  },
+  {
+    name: 'item 2',
+    url: '#0'
+  }]
+%}
+
+{% macro global(active='') %}
+  <style>#global-header-bar{display: none}</style>
+  <div class="global-nav">
+    <div class="global-nav-wrapper">
+      <ul>
+        {% for item in globalNavItems %}
+          {% if item.name == active %}
+            <li class="active"><a href="{{item.url}}">{{ item.name | capitalize }}</a></li>
+          {% else %}
+            <li><a href="{{item.url}}">{{ item.name | capitalize }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro secondary(items, active='') %}
+  <div class="secondary-nav">
+    <ul>
+      {% for item in items %}
+        {% if item.name == active %}
+          <li class="active"><a href="{{item.url}}">{{ item.name | capitalize }}</a></li>
+        {% else %}
+          <li><a href="{{item.url}}">{{ item.name | capitalize }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endmacro %}

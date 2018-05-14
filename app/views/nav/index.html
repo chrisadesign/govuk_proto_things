@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% import "../includes/navigation.html" as nav %}
+
+{% block content %}
+
+  {{ nav.global(active='item 1') }}
+
+  <main id="content" role="main">
+    <a class="link-back" href="../index">Back</a>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        <h1 class="heading-large">Global and secondary navigations</h1>
+
+        {{ nav.secondary(
+          [
+            {
+              name: 'item 1',
+              url: '#0'
+            },
+            {
+              name: 'item 2',
+              url: '#0'
+            }],
+          active='item 1'
+        ) }}
+
+        <p>Macros are used to show the global and secondary nav styles and set active state.</p>
+
+      </div>
+    </div>
+  </main>
+
+{% endblock %}
