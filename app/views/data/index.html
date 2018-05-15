@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <main id="content" role="main">
+    <a class="link-back" href="../index">Back</a>
+
+    <div class="grid-row">
+      <div class="column-full">
+
+        <h1 class="heading-large">Generate a table based on a data JSON file</h1>
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.first_name }} {{ user.last_name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phone }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </main>
+
+{% endblock %}

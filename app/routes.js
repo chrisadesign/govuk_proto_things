@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const {checkErrors, checkBlank, checkAccountNumber, checkBusinessName, checkSortCode, checkEmail} = require('./errorfunctions')
 
 // Route index page
 router.get('/', function (req, res) {
@@ -10,6 +9,9 @@ router.get('/', function (req, res) {
 
 
 
+
+// Errors
+const {checkErrors, checkBlank, checkAccountNumber, checkBusinessName, checkSortCode, checkEmail} = require('./errorfunctions')
 
 router.post('/errors/check-errors', (req, res) => {
   const errors = {
@@ -38,6 +40,18 @@ router.post('/errors/check-errors', (req, res) => {
   .catch(errors => {
     res.render('errors/index', {errors})
   })
+})
+
+
+
+
+
+// Data
+const data = require('./data.json')
+
+router.get('/data/', function (req, res) {
+  res.locals.users = data
+  res.render('data/index')
 })
 
 
