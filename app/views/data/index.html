@@ -32,6 +32,42 @@
         </table>
 
       </div>
+
+      <div class="column-two-thirds">
+        <form action="/data" method="post" class="form">
+
+          <h2 class="heading-large">
+            Add a new user
+          </h2>
+
+          <div class="form-group">
+            <label class="form-label" for="id">ID</label>
+            <input class="form-control" id="id" name="id" value="{{ data['id'] }}" type="text" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="first_name">First name</label>
+            <input class="form-control" id="first_name" name="first_name" value="{{ data['first_name'] }}" type="text" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="last_name">Last name</label>
+            <input class="form-control" id="last_name" name="last_name" value="{{ data['last_name'] }}" type="text" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email address</label>
+            <input class="form-control" id="email" name="email" value="{{ data['email'] }}" type="text" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone number</label>
+            <input class="form-control" id="phone" name="phone" value="{{ data['phone'] }}" type="text" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="button" value="Submit">
+          </div>
+
+        </form>
+      </div>
     </div>
   </main>
 

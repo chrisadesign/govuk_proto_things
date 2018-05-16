@@ -47,11 +47,29 @@ router.post('/errors/check-errors', (req, res) => {
 
 
 // Data
-const data = require('./data.json')
+const data = require('./assets/data.json')
 
 router.get('/data/', function (req, res) {
   res.locals.users = data
   res.render('data/index')
+})
+
+const fs = require('fs')
+
+router.post('/data', (req, res) => {
+  const newItem = Object.assign({
+    id: req.body.id,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    phone: req.body.phone
+  })
+  data.push(newItem)
+  fs.writeFile('app/assets/data.json', JSON.stringify(data,null,2), (err) => {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+  res.redirect('/data/confirmation-page')
 })
 
 
